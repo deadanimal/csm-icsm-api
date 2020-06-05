@@ -9,7 +9,11 @@ from simple_history.models import HistoricalRecords
 
 from core.helpers import PathAndRename
 
-class Organisation(models.Model):
+from users.models import (
+    CustomUser
+)
+
+class AuditApplication(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     ssm_registration_no = models.CharField(max_length=255, default='NA')
@@ -24,6 +28,36 @@ class Organisation(models.Model):
     organisation_phone = models.CharField(max_length=100, default='NA')
     organisation_email = models.CharField(max_length=100, default='NA')
     organisation_fax = models.CharField(max_length=100, default='NA')
+    is_large_organisation = models.BooleanField(default=False)
+
+    ORGANISATION_TYPE = [
+        ('GM', 'Government'),
+        ('PM', 'Private (Malaysia)'),
+        ('PF', 'Private (Foreign)'),
+        ('NA', 'Not Available')
+    ]
+    organisation_type = models.CharField(max_length=2, choices=ORGANISATION_TYPE, default='NA')
+
+    EMPLOYEES_AMOUNT = [
+        ('1-20', '1-20'),
+        ('21-50', '21-50'),
+        ('51-100', '51-100'),
+        ('101-200', '101-200'),
+        ('> 200', 'Over 200'),
+        ('NA', 'Not Available')
+    ]
+    employees_amount = models.CharField(max_length=2, choices=EMPLOYEES_AMOUNT, default='NA')
+
+    TURNOVER = [
+        ('< 1M', 'Less than 1 000 000'),
+        ('1M-5M', '1 000 000 - 5 000 000'),
+        ('5M-50M', '5 000 000 - 50 000 000'),
+        ('> 50M', 'Over 50 000 000'),
+        ('NA', 'Not Applicable')
+
+    ]
+    turnover = models.CharField(max_length=2, choices=TURNOVER, default='NA')
+    user = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
 
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)

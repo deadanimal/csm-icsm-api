@@ -22,14 +22,29 @@ class NestedDefaultRouter(NestedRouterMixin, routers.DefaultRouter):
 
 router = NestedDefaultRouter()
 
+# Audits app
+
+from audits.views import (
+    AuditApplicationViewSet
+)
+
+audits_router = router.register(
+    'audits', AuditApplicationViewSet
+)
+
 # Certificates app
 
 from certificates.views import (
-    CertificateViewSet
+    CertificateViewSet,
+    CertificateApplicationViewSet
 )
 
 certificates_router = router.register(
     'certificates', CertificateViewSet
+)
+
+certificate_applications_router = router.register(
+    'certificate-applications', CertificateApplicationViewSet
 )
 
 # Certificates app

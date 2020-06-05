@@ -15,7 +15,7 @@ class Complaint(models.Model):
     COMPLAINT_TYPE = [
         ('IS', 'ICSB service'),
         ('MC', 'Misused of certificates mark'),
-        ('IP', 'ISCB personal and external resources'),
+        ('IP', 'ISCB personal & external resources'),
         ('IC', 'ISCB client performance'),
         ('VC', 'Vulnerabilities of certified product or website'),
         ('NA', 'Not available')

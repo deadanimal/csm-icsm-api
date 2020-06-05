@@ -9,18 +9,11 @@ from rest_framework import serializers
 from django.utils.timezone import now
 
 from .models import (
-    Certificate,
-    CertificateApplication
+    AuditApplication
 )
 
-class CertificateSerializer(serializers.ModelSerializer):
+class AuditApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Certificate
-        fields = '__all__'
-
-class CertificateApplicationSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CertificateApplication
+        model = AuditApplication
         fields = '__all__'

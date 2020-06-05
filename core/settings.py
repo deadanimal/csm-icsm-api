@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'simple_history',
 
+    'audits',
     'certificates',
     'complaints',
     'compliances',
