@@ -61,7 +61,7 @@ class CertificateApplication(models.Model):
         ('> 200', 'Over 200'),
         ('NA', 'Not Available')
     ]
-    employees_amount = models.CharField(max_length=2, choices=EMPLOYEES_AMOUNT, default='NA')
+    employees_amount = models.CharField(max_length=10, choices=EMPLOYEES_AMOUNT, default='NA')
 
     TURNOVER = [
         ('< 1M', 'Less than 1 000 000'),
@@ -71,7 +71,7 @@ class CertificateApplication(models.Model):
         ('NA', 'Not Applicable')
 
     ]
-    turnover = models.CharField(max_length=2, choices=TURNOVER, default='NA')
+    turnover = models.CharField(max_length=10, choices=TURNOVER, default='NA')
     product_name = models.CharField(max_length=100, default='NA')
     project_leader = models.CharField(max_length=100, default='NA')
     target_evaluation_name = models.CharField(max_length=100, default='NA')

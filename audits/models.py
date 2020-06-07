@@ -46,7 +46,7 @@ class AuditApplication(models.Model):
         ('> 200', 'Over 200'),
         ('NA', 'Not Available')
     ]
-    employees_amount = models.CharField(max_length=2, choices=EMPLOYEES_AMOUNT, default='NA')
+    employees_amount = models.CharField(max_length=10, choices=EMPLOYEES_AMOUNT, default='NA')
 
     TURNOVER = [
         ('< 1M', 'Less than 1 000 000'),
@@ -56,7 +56,7 @@ class AuditApplication(models.Model):
         ('NA', 'Not Applicable')
 
     ]
-    turnover = models.CharField(max_length=2, choices=TURNOVER, default='NA')
+    turnover = models.CharField(max_length=10, choices=TURNOVER, default='NA')
     user = models.ForeignKey(CustomUser, null=True, on_delete=models.CASCADE)
 
     created_date = models.DateTimeField(auto_now_add=True)
